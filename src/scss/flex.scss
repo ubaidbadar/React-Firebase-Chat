@@ -1,0 +1,17 @@
+.__flex{
+    display: flex;
+    align-items: center;
+}
+.__flex-stretch{
+    display: flex;
+}
+.__sb{
+    justify-content: space-between;
+}
+.__flex-center{
+    justify-content: center;
+}
+.__row{
+    display: flex;
+    flex-direction: column;
+}
