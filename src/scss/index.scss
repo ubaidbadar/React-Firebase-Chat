@@ -3,17 +3,4 @@
 @import './flex.scss';
 @import './colors.scss';
 @import './layouts.scss';
-
-
-*{
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-}
-body{
-    margin: 0;
-    font-size: 14px;
-    color: $textColor;
-}
-.__card{
-    padding: 1em;
-}
+@import './styles.scss';

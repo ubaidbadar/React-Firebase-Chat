@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    margin: 0;
+    font-size: 14px;
+    color: $text;
+    background: rgba($color: $grey, $alpha: 0.2);
+}
+.__card{
+    background: $card;
+    @extend .__p-1;
+}
+.__btn, .__input{
+    @extend .__p-1;
+    outline: none;
+}
+.__btn{
+    border: 1px solid $primary;
+    background: $primary;
+    text-transform: uppercase;
+    font-weight: bold;
+}
