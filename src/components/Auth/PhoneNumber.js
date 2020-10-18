@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Input from '../../ui/Input';
+import Input from '../../ui/Input/Input';
 import './PhoneNumber.scss';
 
 const PhoneNumber = props => {
@@ -10,7 +10,7 @@ const PhoneNumber = props => {
     }
     return (
         <div className='__phone-number'>
-            <Input type='number'
+            <Input type='text'
                 name='phoneNumber'
                 htmlFor='Phone Number'
                 min={1}

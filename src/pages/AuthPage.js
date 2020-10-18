@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './AuthPage.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCountries } from '../store/actions/countries';
-import Spinner from '../ui/Spinner';
-import AuthComponent from '../components/Auth/AuthComponent';
+import WrapComponent from '../hoc/WrapComponent';
+import { getCountries } from '../store/actions/countries'
+import PhoneNumber from '../components/Auth/PhoneNumber';
 
-const AuthPage = () => {
-    const { status, data, err } = useSelector(({ countries }) => countries);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getCountries());
-    }, [dispatch])
-
-    switch (status) {
-        case 'initial':
-            return <Spinner />
-        case 'success':
-            return <AuthComponent data={data} />
-        default:
-            return <h1 className='__m-a __danger'>{err.message}</h1>
-    }
+const AuthPage = props => {
+    return (
+        <div className='__card __m-a __AuthPage'>
+            <PhoneNumber />
+            {/* <PhoneNumber /> */}
+        </div>
+    )
 }
 
-export default AuthPage;
+export default WrapComponent(AuthPage, 'countries', getCountries);
