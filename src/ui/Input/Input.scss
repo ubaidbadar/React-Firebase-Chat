@@ -1,41 +1,51 @@
 @import '../../scss/colors.scss';
 
 .__input-wrapper{
-    >.__absolute{
+    >.__fixValue, .__label{
         left: 0;
-        top: 1.6em;
+        top: 1.8em;
+    }
+    >.__label{
         transition: linear 0.15s all;
+        color: $grey;
     }
     >.__input{
         border: none;
         outline: none;
         border-bottom: 1px solid $grey;
-        padding: 1.2em 0 0.3em 0;
+        padding: 1.4em 0 0.5em 0;
         margin-top: 0.4em;
         z-index: 1;
         font-size: inherit;
         width: 100%;
         &:not(:placeholder-shown),
         &:focus{
-            + .__absolute{
+            + .__label{
                 font-size: 0.8em;
                 top: 0;
             }
         }
         &:focus {
             border-color: $primary;
-            + .__absolute{
+            + .__label{
                 color: $primary;
             }
         }
-        &:placeholder-shown + .__absolute{
+        &:placeholder-shown + .__label{
             cursor: text;
         }
         &:invalid{
             border-color: $danger;
-            +.__absolute{
+            +.__label{
                 color: $danger;
             }
         }
     }
+}
+.__fixValueWrapper{
+    >.__label{
+        left: 0;
+        top: 0;
+        font-size: 0.8em;
+    }   
 }
