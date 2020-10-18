@@ -1,3 +1,5 @@
+$radius: 0.3em;
+
 *{
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
@@ -8,17 +10,44 @@ body{
     color: $text;
     background: rgba($color: $grey, $alpha: 0.2);
 }
+.__app{
+    height: 100vh;
+    @extend .__row;
+}
 .__card{
     background: $card;
     @extend .__p-1;
-}
-.__btn, .__input{
-    @extend .__p-1;
-    outline: none;
+    border-radius: $radius;
 }
 .__btn{
     border: 1px solid $primary;
     background: $primary;
     text-transform: uppercase;
     font-weight: bold;
+    padding: 1em 0;
+    text-align: center;
+    border-radius: $radius;
+}
+.__blur{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba($color: $text, $alpha: 0.6);
+}
+.__block{
+    display: block;
+}
+.__relative{
+    position: relative;
+}
+.__absolute{
+    position: absolute;
+}
+.__words-no-wrap{
+    white-space: nowrap;
+}
+.__danger{
+    color: $danger;
 }
