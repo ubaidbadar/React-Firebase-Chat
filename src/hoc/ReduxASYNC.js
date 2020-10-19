@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../ui/Spinner/Spinner'
 
-const WrapComponent = (WrappedComponent, key, action = null) => {
+const ReduxASYNC = (WrappedComponent, reducerName, action) => {
     const App = () => {
-        const { status, data, err } = useSelector(store => store[key]);
+        const { status, data, err } = useSelector(store => store[reducerName]);
         const dispatch = useDispatch();
 
         useEffect(() => {
-            action && dispatch(action());
+            dispatch(action());
         }, [dispatch])
 
         switch (status) {
@@ -23,4 +23,4 @@ const WrapComponent = (WrappedComponent, key, action = null) => {
     return App;
 }
 
-export default WrapComponent;
+export default ReduxASYNC;

@@ -12,36 +12,36 @@ const PhoneNumber = ({ countries }) => {
         const { value } = target;
         +value >= 0 && value.length < 11 && setPhoneNumber(value);
     }
-
+    
     const id = 'sign-in-recaptcha';
 
     useEffect(() => {
-        window.recaptchaVerifier = getRecapcha(id, () => setIsRecapchaChecked(true), () => setIsRecapchaChecked(false));
-        window.recaptchaVerifier.render();
+        getRecapcha(id, () => setIsRecapchaChecked(true), () => setIsRecapchaChecked(false));
         const country = countries.find(({ callingCodes }) => callingCodes[0] === "92");
         setCountry(country);
     }, [countries]);
-
     return (
         <div className='__phone-number'>
             <h2 className='__center'>Add your Phone Number</h2>
-            <div className='__flex'>
-                <div className='__mr-s'>
-                    <Select htmlFor='Select' value={country.callingCodes} onChange={({ target }) => setCountry(target.value)}>
-                        {countries.map(({ alpha2Code, callingCodes }, index) => <option key={index} value={callingCodes}> {alpha2Code} +{callingCodes} </option>)}
-                    </Select>
+            <form>
+                <div className='__flex'>
+                    <div className='__mr-s'>
+                        <Select htmlFor='Select' value={country.callingCodes} onChange={({ target }) => setCountry(target.value)}>
+                            {countries.map(({ alpha2Code, callingCodes }, index) => <option key={index} value={callingCodes}> {alpha2Code} +{callingCodes} </option>)}
+                        </Select>
+                    </div>
+                    <Input type='text'
+                        icon={country.flag}
+                        name='phoneNumber'
+                        htmlFor='Phone Number'
+                        min={1}
+                        value={phoneNumber}
+                        onChange={onPhoneNumberChange}
+                    />
                 </div>
-                <Input type='text'
-                    icon={country.flag}
-                    name='phoneNumber'
-                    htmlFor='Phone Number'
-                    min={1}
-                    value={phoneNumber}
-                    onChange={onPhoneNumberChange}
-                />
-            </div>
-            <div id={id} className='__mt-1 __mb-1'></div>
-            <button className='__btn __large' disabled={!(phoneNumber.length === 10 && isRecapchaChecked)}>Login</button>
+                <div id={id} className='__mt-1 __mb-1'></div>
+                <button className='__btn __large' disabled={!(phoneNumber.length === 10 && isRecapchaChecked)}>Login</button>
+            </form>
         </div>
     )
 }

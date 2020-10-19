@@ -6,7 +6,10 @@ export const storage = firebase.storage();
 
 export const user = auth.currentUser;
 
-export const getRecapcha = (id, cb, errcb) => new firebase.auth.RecaptchaVerifier(id, {
-    'callback': cb,
-    'expired-callback': errcb,
-});
+export const getRecapcha = (id, cb, errcb) => {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(id, {
+        'callback': cb,
+        'expired-callback': errcb,
+    });
+    window.recaptchaVerifier.render();
+}

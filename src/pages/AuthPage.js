@@ -1,6 +1,6 @@
 import React from 'react';
 import './AuthPage.scss';
-import WrapComponent from '../hoc/WrapComponent';
+import ReduxASYNC from '../hoc/ReduxASYNC';
 import { getCountries } from '../store/actions/countries';
 import PhoneNumber from '../components/Auth/PhoneNumber';
 import logo from '../assets/logo.png';
@@ -14,4 +14,4 @@ const AuthPage = props => {
     )
 }
 
-export default WrapComponent(AuthPage, 'countries', getCountries);
+export default ReduxASYNC(AuthPage, 'countries', getCountries);
