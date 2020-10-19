@@ -4,11 +4,11 @@ import Input from '../../ui/Input/Input';
 import Select from '../../ui/Select/Select';
 import './PhoneNumber.scss';
 import logo from '../../assets/logo.png';
+import { useSelector } from 'react-redux';
 
 const PhoneNumber = ({
     phoneNumber,
     onPhoneNumberChanged,
-    countries,
     countryCode,
     onCountryChange,
     isRecapchaChecked,
@@ -17,7 +17,7 @@ const PhoneNumber = ({
     err
 }) => {
     const id = 'sign-in-recaptcha';
-
+    const countries = useSelector(({ countries }) => countries);
     const onPhoneNumberChange = e => {
         const { value } = e.target;
         +value >= 0 && value.length < 11 && onPhoneNumberChanged(value);

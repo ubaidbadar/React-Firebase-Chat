@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import ReduxASYNC from '../hoc/ReduxASYNC';
-import { getCountries } from '../store/actions/countries';
 import PhoneNumber from '../components/Auth/PhoneNumber';
 import Spinner from '../ui/Spinner/Spinner';
 import { phoneNumberConfirmationHandler, signInWithPhoneNumber } from '../firebase/utility';
@@ -13,7 +11,6 @@ const AuthPage = props => {
     const [isRecapchaChecked, setIsRecapchaChecked] = useState(false);
     const [otp, setotp] = useState('');
     const [err, setError] = useState(null);
-
 
     const routeHandler = (status = '', err = null) => {
         setIsRecapchaChecked(false);
@@ -55,7 +52,6 @@ const AuthPage = props => {
                 err={err}
                 countryCode={countryCode}
                 onPhoneSubmit={onPhoneSubmit}
-                countries={props.data}
                 onCountryChange={e => setCountryCode(e.target.value)}
                 onPhoneNumberChanged={phoneNumber => setPhoneNumber(phoneNumber)}
                 isRecapchaChecked={isRecapchaChecked}
@@ -64,4 +60,4 @@ const AuthPage = props => {
     }
 }
 
-export default ReduxASYNC(AuthPage, 'countries', getCountries);
+export default AuthPage;

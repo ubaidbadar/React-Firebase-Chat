@@ -1,11 +1,7 @@
-import { STORE_COUNTRIES, FETCH_COUNTRIES_ERROR } from '../actionTypes';
+import { STORE_COUNTRIES } from '../actionTypes';
 
-const initialState = {
-    status: 'initial',
-    data: [],
-}
 
-const countries = (state = initialState, { type, payload }) => type === STORE_COUNTRIES || type === FETCH_COUNTRIES_ERROR ? payload : state;
+const countries = (state = [], { type, payload }) => type === STORE_COUNTRIES ? payload : state;
 
 
 export default countries;

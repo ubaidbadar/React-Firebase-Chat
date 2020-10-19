@@ -6,7 +6,6 @@ const ReduxASYNC = (WrappedComponent, reducerName, action) => {
     const App = () => {
         const { status, data, err } = useSelector(store => store[reducerName]);
         const dispatch = useDispatch();
-
         useEffect(() => {
             dispatch(action());
         }, [dispatch])
