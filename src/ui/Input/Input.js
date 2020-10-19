@@ -6,7 +6,7 @@ const Input = props => {
         <label className='__input-wrapper __f1 __words-no-wrap __relative __block'>
             <input className='__input'
                 placeholder=' '
-                autoComplete='Off'
+                autoComplete="off"
                 {...props}
             />
             <span className='__absolute __label'>{props.htmlFor}</span>
