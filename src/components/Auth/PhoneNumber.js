@@ -1,46 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { getRecapcha } from '../../firebase/utility';
 import Input from '../../ui/Input/Input';
 import Select from '../../ui/Select/Select';
 import './PhoneNumber.scss';
+import logo from '../../assets/logo.png';
 
-const PhoneNumber = ({ countries }) => {
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [country, setCountry] = useState({});
-    const [isRecapchaChecked, setIsRecapchaChecked] = useState(false);
-    const onPhoneNumberChange = ({ target }) => {
-        const { value } = target;
-        +value >= 0 && value.length < 11 && setPhoneNumber(value);
-    }
-    
+const PhoneNumber = props => {
     const id = 'sign-in-recaptcha';
 
+    const onPhoneNumberChange = ({ target }) => {
+        const { value } = target;
+        +value >= 0 && value.length < 11 && props.onPhoneNumberChanged(value);
+    }
+
     useEffect(() => {
-        getRecapcha(id, () => setIsRecapchaChecked(true), () => setIsRecapchaChecked(false));
-        const country = countries.find(({ callingCodes }) => callingCodes[0] === "92");
-        setCountry(country);
-    }, [countries]);
+        getRecapcha(id, () => props.onRecaptchChanged(true), () => props.onRecaptchChanged(false));
+    }, []);
     return (
-        <div className='__phone-number'>
+        <div className='__phone-number __card __m-a'>
+            <img alt='' src={logo} className='__m-a __mt-1 __block __logo' />
             <h2 className='__center'>Add your Phone Number</h2>
-            <form>
+            <form onSubmit={props.onPhoneSubmit}>
                 <div className='__flex'>
                     <div className='__mr-s'>
-                        <Select htmlFor='Select' value={country.callingCodes} onChange={({ target }) => setCountry(target.value)}>
-                            {countries.map(({ alpha2Code, callingCodes }, index) => <option key={index} value={callingCodes}> {alpha2Code} +{callingCodes} </option>)}
+                        <Select htmlFor='Select' value={props.countryCode} onChange={props.onCountryChange}>
+                            {props.countries.map(({ alpha2Code, callingCodes }, index) => <option key={index} value={callingCodes}> {alpha2Code} +{callingCodes} </option>)}
                         </Select>
                     </div>
                     <Input type='text'
-                        icon={country.flag}
                         name='phoneNumber'
                         htmlFor='Phone Number'
                         min={1}
-                        value={phoneNumber}
+                        value={props.phoneNumber}
                         onChange={onPhoneNumberChange}
                     />
                 </div>
-                <div id={id} className='__mt-1 __mb-1'></div>
-                <button className='__btn __large' disabled={!(phoneNumber.length === 10 && isRecapchaChecked)}>Login</button>
+                <div id={id} className='__mt-1 __mb-1 __recaptcha'></div>
+                <button className='__btn __large' disabled={!(props.phoneNumber.length === 10 && props.isRecapchaChecked)}>Login</button>
             </form>
         </div>
     )

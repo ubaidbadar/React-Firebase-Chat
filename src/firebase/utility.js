@@ -13,3 +13,8 @@ export const getRecapcha = (id, cb, errcb) => {
     });
     window.recaptchaVerifier.render();
 }
+
+export const signInWithPhoneNumber = phoneNumber => {
+    auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+        .then(confirmationResult => console.log(confirmationResult))
+}

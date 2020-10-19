@@ -25,9 +25,11 @@ body{
     text-transform: uppercase;
     font-weight: bold;
     padding: 0.7em 1em;
+    outline: none;
     text-align: center;
     border-radius: $radius;
     color: #fff;
+    cursor: pointer;
     &.__large{
         width: 100%;
     }
@@ -63,4 +65,8 @@ body{
 }
 .__center{
     text-align: center;
+}
+.__recaptcha{
+    max-width: 100%;
+    overflow: hidden;
 }
