@@ -21,8 +21,7 @@ export const signInWithPhoneNumber = (phoneNumber, onFinished, onError) => {
         .catch(onError);
 }
 
-export const phoneNumberConfirmationHandler = (otp, onFinished, onError) => {
+export const phoneNumberConfirmationHandler = (otp, onError) => {
     window.confirmationResult.confirm(otp)
-        .then(onFinished)
         .catch(onError)
 }

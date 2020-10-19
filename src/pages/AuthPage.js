@@ -25,17 +25,17 @@ const AuthPage = props => {
         e.preventDefault();
         signInWithPhoneNumber(
             `+${countryCode}${phoneNumber}`,
-            routeHandler,
+            () => routeHandler('OTP', err),
             err => routeHandler('', err) ,
         );
     }
 
     const onOTPSubmit = e => {
         e.preventDefault();
+        routeHandler('loading');
         phoneNumberConfirmationHandler(
             otp,
-            () => routeHandler('loading'),
-            err => routeHandler('OTP', err)
+            err => routeHandler('OTP', err),
         )
     }
 
