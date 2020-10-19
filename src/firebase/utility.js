@@ -14,7 +14,10 @@ export const getRecapcha = (id, cb, errcb) => {
     window.recaptchaVerifier.render();
 }
 
-export const signInWithPhoneNumber = phoneNumber => {
+export const signInWithPhoneNumber = (phoneNumber, onStart, onFinished, onError) => {
+    onStart();
     auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-        .then(confirmationResult => console.log(confirmationResult))
+        .then(confirmationResult => window.confirmationResult = confirmationResult)
+        .then(onFinished)
+        .catch(onError);
 }

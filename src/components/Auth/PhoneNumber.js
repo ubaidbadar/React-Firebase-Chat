@@ -36,6 +36,7 @@ const PhoneNumber = props => {
                     />
                 </div>
                 <div id={id} className='__mt-1 __mb-1 __recaptcha'></div>
+                <p className='__danger'>{props.err.message}</p>
                 <button className='__btn __large' disabled={!(props.phoneNumber.length === 10 && props.isRecapchaChecked)}>Login</button>
             </form>
         </div>

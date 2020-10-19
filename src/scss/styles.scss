@@ -70,3 +70,10 @@ body{
     max-width: 100%;
     overflow: hidden;
 }
+.__small-font{
+    font-size: 0.9em;
+}
+.__primary{
+    color: $primary;
+    cursor: pointer;
+}
