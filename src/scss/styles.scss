@@ -24,9 +24,19 @@ body{
     background: $primary;
     text-transform: uppercase;
     font-weight: bold;
-    padding: 1em 0;
+    padding: 0.7em 1em;
     text-align: center;
     border-radius: $radius;
+    color: #fff;
+    &.__large{
+        width: 100%;
+    }
+    &:disabled{
+        opacity: 0.4;
+        background: $grey;
+        border-color: $grey;
+        cursor: not-allowed;
+    }
 }
 .__blur{
     position: fixed;
@@ -50,4 +60,7 @@ body{
 }
 .__danger{
     color: $danger;
+}
+.__center{
+    text-align: center;
 }

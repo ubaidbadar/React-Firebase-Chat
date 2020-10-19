@@ -1,0 +1,28 @@
+@import '../../scss/colors.scss';
+
+.__select-field-wrapper{
+    >.__select{
+        border: none;
+        border-bottom: 1px solid $grey;
+        padding: 0 0 0.4em 0;
+        margin: 2em 0 0 0;
+        outline: none;
+        &:focus{
+            border-color: $primary;
+            +.__label{
+                color: $primary;
+            }
+        }
+        &::after{
+            border: 2px solid purple;
+            content: '';
+            display: block;
+            width: 2em;
+        }
+    }
+    >.__label{
+        left: 0;
+        top: 0;
+        font-size: 0.8em;
+    }
+}

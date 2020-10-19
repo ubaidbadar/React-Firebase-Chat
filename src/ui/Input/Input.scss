@@ -1,12 +1,10 @@
 @import '../../scss/colors.scss';
 
 .__input-wrapper{
-    >.__fixValue, .__label{
-        left: 0;
-        top: 1.8em;
-    }
     >.__label{
         transition: linear 0.15s all;
+        top: 1.8em;
+        left: 0;
         color: $grey;
     }
     >.__input{
@@ -41,11 +39,4 @@
             }
         }
     }
-}
-.__fixValueWrapper{
-    >.__label{
-        left: 0;
-        top: 0;
-        font-size: 0.8em;
-    }   
 }

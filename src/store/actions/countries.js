@@ -6,6 +6,7 @@ const fetchCountriesError = payload => ({ type: FETCH_COUNTRIES_ERROR, payload: 
 
 export const getCountries = () => dispatch => {
     axios.get('https://restcountries.eu/rest/v2/all')
-        .then(({ data }) => dispatch(storeCountries({ status: 'success', data })))
+        .then(({ data }) => data.filter(({ callingCodes }) => callingCodes[0].length > 1 && callingCodes[0].length < 3))
+        .then(countries => dispatch(storeCountries({ status: 'success', data: countries })))
         .catch(err => dispatch(fetchCountriesError({ status: 'failure', err })))
 }
